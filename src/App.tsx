@@ -1,21 +1,33 @@
-import { Button, Image, Link, Text } from "@chakra-ui/react";
-import { Column } from "./utils/chakraUtils";
+import { Container, Divider, HStack, Image, Text } from "@chakra-ui/react";
+import { Column, Row } from "./utils/chakraUtils";
 
-function Home() {
+function App() {
   return (
     <Column
       mainAxisAlignment="flex-start"
-      crossAxisAlignment="center"
+      crossAxisAlignment="flex-start"
       height="100vh"
-      py="10%"
-      backgroundColor="#f7f4f0"
+      p={5}
     >
-      <Image width="350px" src="https://www.paradigm.xyz/logo.svg" />
-      <Text mt={6} textAlign="center" fontSize="large" width="450px">
-        beep boop
-      </Text>
+      <Row
+        height="40%"
+        mainAxisAlignment="flex-start"
+        crossAxisAlignment="flex-start"
+        p={5}
+      >
+        hi
+      </Row>
+      <Divider />
+      <Row
+        height="40%"
+        mainAxisAlignment="flex-start"
+        crossAxisAlignment="flex-start"
+        p={5}
+      >
+        hi
+      </Row>
     </Column>
   );
 }
 
-export default Home;
+export default App;
