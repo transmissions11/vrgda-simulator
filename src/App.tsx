@@ -1,4 +1,4 @@
-import { Center, Divider, Heading } from "@chakra-ui/react";
+import { Center, Divider, Heading, useToast } from "@chakra-ui/react";
 import { Column, Row } from "./utils/chakraUtils";
 import UserCard from "./components/UserCard";
 import { AddIcon } from "@chakra-ui/icons";
@@ -31,6 +31,8 @@ function App() {
 
   const [selectedPlayerIndex, setSelectedPlayerIndex] = useState<number>(0);
 
+  const toast = useToast();
+
   const buy = (
     price: number,
     vrgdaIndex: number,
@@ -38,16 +40,23 @@ function App() {
   ) => {
     let notEnoughCoins = false;
 
+    const selectedVRGDAName = vrgdas[vrgdaIndex].name;
+
     setPlayers(
       players.map((player, i) => {
         if (selectedPlayerIndex == i) {
           if (price > player.balance) {
-            alert("Not enough coins!");
+            toast({
+              title: "Not enough coins!",
+              description: `You can't afford a ${selectedVRGDAName} at this time.`,
+              status: "error",
+              duration: 3000,
+              isClosable: true,
+              position: "top-right",
+            });
             notEnoughCoins = true;
             return player;
           }
-
-          const selectedVRGDAName = vrgdas[vrgdaIndex].name;
 
           return {
             ...player,
@@ -76,6 +85,16 @@ function App() {
         return vrgda;
       })
     );
+
+    if (!notEnoughCoins)
+      toast({
+        title: "Purchased!",
+        description: `Successfully purchased a ${selectedVRGDAName}!`,
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+        position: "top-right",
+      });
   };
 
   return (
