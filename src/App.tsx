@@ -160,8 +160,8 @@ function App() {
 
                 startTime: time,
                 targetPrice: parseFloat(prompt("Target Price?") || "10"),
-                decayPercent: parseFloat(prompt("Decay Percent?") || "0.5"),
-                numPerHour: parseFloat(prompt("Num Per Hour?") || "10"),
+                decayPercent: parseFloat(prompt("Decay Percent?") || "0.8"),
+                numPerHour: parseFloat(prompt("Num Per Hour?") || "30"),
 
                 numSold: 0,
               },
