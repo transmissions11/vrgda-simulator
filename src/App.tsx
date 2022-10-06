@@ -41,6 +41,7 @@ function App() {
     let notEnoughCoins = false;
 
     const selectedVRGDAName = vrgdas[vrgdaIndex].name;
+    const selectedPlayerName = players[selectedPlayerIndex].name;
 
     setPlayers(
       players.map((player, i) => {
@@ -48,7 +49,7 @@ function App() {
           if (price > player.balance) {
             toast({
               title: "Not enough coins!",
-              description: `You can't afford a ${selectedVRGDAName} at this time.`,
+              description: `${selectedPlayerName} can't afford a ${selectedVRGDAName} right now.`,
               status: "error",
               duration: 3000,
               isClosable: true,
@@ -89,7 +90,7 @@ function App() {
     if (!notEnoughCoins)
       toast({
         title: "Purchased!",
-        description: `Successfully purchased a ${selectedVRGDAName}!`,
+        description: `${selectedPlayerName} purchased a ${selectedVRGDAName}!`,
         status: "success",
         duration: 3000,
         isClosable: true,
